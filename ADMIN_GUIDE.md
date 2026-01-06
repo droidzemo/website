@@ -1,6 +1,6 @@
-# Admin Guide for Nigamelastic Website
+# Admin Guide for Nigamelastic
 
-This guide explains how to manage content on the Nigamelastic website. The site is built with Astro Starlight and uses Markdown for content.
+This guide explains how to manage content on the Nigamelastic. The site is built with Astro Starlight and uses Markdown for content.
 
 ## Adding Content
 
@@ -32,5 +32,11 @@ To add images or files:
    ```
 
 ## Deploying Changes
+This site is configured for **Automatic Deployment** via GitHub Actions.
 1. Commit your changes to the GitHub repository.
-2. The site will be automatically updated (assuming a CI/CD pipeline is set up, e.g., GitHub Actions).
+2. Push your changes to the `main` branch.
+3. GitHub Actions will automatically build and deploy the site to GitHub Pages.
+
+> [!NOTE]
+> Ensure that GitHub Pages is set to deploy from "GitHub Actions" in your repository settings (**Settings > Pages > Build and deployment > Source**).
+

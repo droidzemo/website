@@ -1,6 +1,6 @@
-# Developer Guide for Nigamelastic Website
+# Developer Guide for Nigamelastic
 
-This document provides technical details for developers extending the Nigamelastic website.
+This document provides technical details for developers extending the Nigamelastic.
 
 ## Tech Stack
 - **Framework**: Astro (v4+)

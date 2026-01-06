@@ -1,58 +1,106 @@
 :root {
+	/* Brand Colors - Deep Violet Palette */
+	--brand-violet: #8b5cf6;
+	--brand-violet-dark: #6d28d9;
+	--brand-violet-light: #c084fc;
+	--brand-violet-neon: #a78bfa;
+
+	/* Starlight Overrides - Base */
 	--sl-color-accent-low: #3c1e5e;
-	--sl-color-accent: #8b5cf6;
+	--sl-color-accent: var(--brand-violet);
 	--sl-color-accent-high: #ddd6fe;
 	--sl-color-white: #ffffff;
-	--sl-color-gray-1: #1e1e2e;
-	--sl-color-gray-2: #313244;
-	--sl-color-gray-3: #45475a;
-	--sl-color-gray-4: #585b70;
-	--sl-color-gray-5: #7f849c;
-	--sl-color-gray-6: #a6adc8;
-	--sl-color-black: #0f172a;
+	--sl-color-black: #0c0c0e;
 }
 
+/* Light Theme - High Contrast */
 [data-theme='light'] {
-	--sl-color-accent-low: #f5f3ff;
-	--sl-color-accent: #7c3aed;
-	--sl-color-accent-high: #1e1e2e;
 	--sl-color-bg: #ffffff;
 	--sl-color-bg-nav: #f8fafc;
 	--sl-color-bg-sidebar: #f8fafc;
-	--sl-color-text: #1e293b;
-	--sl-color-gray-1: #1e293b;
-	--sl-color-gray-2: #334155;
+	--sl-color-text: #0f172a;
+	--sl-color-gray-1: #0f172a;
+	/* Darkest gray/black for main text */
+	--sl-color-gray-2: #1e293b;
+	--sl-color-gray-3: #334155;
+	--sl-color-gray-4: #475569;
+	--sl-color-gray-5: #64748b;
+	--sl-color-hairline: #e2e8f0;
+
+	--sl-color-accent: var(--brand-violet-dark);
+	/* Darker violet for light mode */
 }
 
+/* Dark Theme - Sleek Cyberpunk */
 [data-theme='dark'] {
-	--sl-color-accent-low: #3c1e5e;
-	--sl-color-accent: #a78bfa;
-	--sl-color-accent-high: #ddd6fe;
-	--sl-color-bg: #0f0f12;
-	--sl-color-bg-nav: #16161a;
-	--sl-color-bg-sidebar: #16161a;
-	--sl-color-hairline-light: #3f3f46;
+	--sl-color-bg: #0b0b0d;
+	--sl-color-bg-nav: #121214;
+	--sl-color-bg-sidebar: #121214;
+	--sl-color-text: #f8fafc;
+	--sl-color-gray-1: #f8fafc;
+	--sl-color-gray-2: #e2e8f0;
+	--sl-color-hairline: #27272a;
+
+	--sl-color-accent: var(--brand-violet-neon);
+	/* Brighter violet for dark mode */
 }
 
-/* Round Logo */
+/* Ensure Logo is Round and Visible */
 .site-title img,
 .hero img {
 	border-radius: 50% !important;
 	aspect-ratio: 1 / 1;
 	object-fit: cover;
+	border: 2px solid var(--sl-color-accent);
+}
+
+/* Site Title Visibility - CRITICAL FIX */
+.site-title span {
+	color: var(--sl-color-accent) !important;
+	font-weight: 800 !important;
+	font-size: 1.5rem !important;
+	letter-spacing: -0.025em !important;
+	text-shadow: 0 0 10px rgba(139, 92, 246, 0.2);
+}
+
+[data-theme='light'] .site-title span {
+	color: #4c1d95 !important;
+	/* Extremely dark violet for visibility */
+}
+
+/* Hero Section Refinements */
+.hero h1 {
+	color: var(--sl-color-accent) !important;
+	font-weight: 900 !important;
+	line-height: 1.1 !important;
+}
+
+[data-theme='light'] .hero h1 {
+	color: #4c1d95 !important;
 }
 
 /* Violet Buttons */
 .sl-link-button.primary {
-	background-color: #8b5cf6 !important;
+	background-color: var(--brand-violet) !important;
 	color: white !important;
+	border: none !important;
+	font-weight: 600 !important;
+	box-shadow: 0 4px 14px 0 rgba(139, 92, 246, 0.39);
 }
 
 .sl-link-button.primary:hover {
-	background-color: #7c3aed !important;
+	background-color: var(--brand-violet-dark) !important;
+	transform: translateY(-1px);
 }
 
-/* Fix theme switcher visibility */
+/* Theme Switcher & Search Visibility */
 starlight-theme-select select {
-	color: var(--sl-color-accent) !important;
+	color: var(--sl-color-text) !important;
+	font-weight: 600 !important;
+	border-color: var(--sl-color-accent) !important;
+}
+
+.search-container button {
+	border: 1px solid var(--sl-color-accent) !important;
+	border-radius: 8px !important;
 }

@@ -1,15 +1,27 @@
 :root {
-	--sl-color-accent-low: #1e1e2e;
+	--sl-color-accent-low: #3c1e5e;
 	--sl-color-accent: #8b5cf6;
-	--sl-color-accent-high: #f5f3ff;
+	--sl-color-accent-high: #ddd6fe;
 	--sl-color-white: #ffffff;
-	--sl-color-gray-1: #e2e8f0;
-	--sl-color-gray-2: #cbd5e1;
-	--sl-color-gray-3: #94a3b8;
-	--sl-color-gray-4: #64748b;
-	--sl-color-gray-5: #475569;
-	--sl-color-gray-6: #334155;
+	--sl-color-gray-1: #1e1e2e;
+	--sl-color-gray-2: #313244;
+	--sl-color-gray-3: #45475a;
+	--sl-color-gray-4: #585b70;
+	--sl-color-gray-5: #7f849c;
+	--sl-color-gray-6: #a6adc8;
 	--sl-color-black: #0f172a;
+}
+
+[data-theme='light'] {
+	--sl-color-accent-low: #f5f3ff;
+	--sl-color-accent: #7c3aed;
+	--sl-color-accent-high: #1e1e2e;
+	--sl-color-bg: #ffffff;
+	--sl-color-bg-nav: #f8fafc;
+	--sl-color-bg-sidebar: #f8fafc;
+	--sl-color-text: #1e293b;
+	--sl-color-gray-1: #1e293b;
+	--sl-color-gray-2: #334155;
 }
 
 [data-theme='dark'] {
@@ -20,4 +32,27 @@
 	--sl-color-bg-nav: #16161a;
 	--sl-color-bg-sidebar: #16161a;
 	--sl-color-hairline-light: #3f3f46;
+}
+
+/* Round Logo */
+.site-title img,
+.hero img {
+	border-radius: 50% !important;
+	aspect-ratio: 1 / 1;
+	object-fit: cover;
+}
+
+/* Violet Buttons */
+.sl-link-button.primary {
+	background-color: #8b5cf6 !important;
+	color: white !important;
+}
+
+.sl-link-button.primary:hover {
+	background-color: #7c3aed !important;
+}
+
+/* Fix theme switcher visibility */
+starlight-theme-select select {
+	color: var(--sl-color-accent) !important;
 }

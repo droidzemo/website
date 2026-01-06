@@ -7,7 +7,7 @@ import tailwindcss from '@tailwindcss/vite';
 // https://astro.build/config
 export default defineConfig({
     site: 'https://droidzemo.github.io',
-    base: '/website',
+    base: process.env.BASE_PATH || '/website',
     integrations: [
         starlight({
             title: 'Nigamelastic',

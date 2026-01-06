@@ -43,7 +43,10 @@
 [data-theme='light'] summary,
 [data-theme='light'] summary *,
 [data-theme='light'] .sidebar-content summary,
-[data-theme='light'] .sidebar-content summary * {
+[data-theme='light'] .sidebar-content summary *,
+[data-theme='light'] .right-sidebar a,
+[data-theme='light'] .right-sidebar a:hover,
+[data-theme='light'] .right-sidebar a[aria-current="true"] {
 	color: #111827 !important;
 	/* Extremely dark for visibility */
 }
@@ -56,6 +59,18 @@
 
 [data-theme='light'] .sidebar-content summary:hover {
 	background-color: #f5f3ff !important;
+}
+
+/* Fix Table of Contents (Right Sidebar) specifically */
+[data-theme='light'] .right-sidebar a:hover {
+	color: #4c1d95 !important;
+	background-color: #f5f3ff !important;
+	text-decoration: underline;
+}
+
+[data-theme='light'] .right-sidebar a[aria-current="true"] {
+	color: #4c1d95 !important;
+	font-weight: 600 !important;
 }
 
 /* Dark Theme - Sleek Cyberpunk */

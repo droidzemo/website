@@ -4,6 +4,8 @@
 	--brand-violet-dark: #6d28d9;
 	--brand-violet-light: #c084fc;
 	--brand-violet-neon: #a78bfa;
+	--brand-violet-soft: #f5f3ff;
+	/* Soothing background violet */
 
 	/* Starlight Overrides - Base */
 	--sl-color-accent-low: #3c1e5e;
@@ -13,22 +15,47 @@
 	--sl-color-black: #0c0c0e;
 }
 
-/* Light Theme - High Contrast */
+/* Light Theme - High Contrast & Soothing Polish */
 [data-theme='light'] {
-	--sl-color-bg: #ffffff;
-	--sl-color-bg-nav: #f8fafc;
+	--sl-color-bg: #fdfcff;
+	--sl-color-bg-nav: #ffffff;
 	--sl-color-bg-sidebar: #f8fafc;
-	--sl-color-text: #0f172a;
-	--sl-color-gray-1: #0f172a;
-	/* Darkest gray/black for main text */
-	--sl-color-gray-2: #1e293b;
-	--sl-color-gray-3: #334155;
-	--sl-color-gray-4: #475569;
-	--sl-color-gray-5: #64748b;
-	--sl-color-hairline: #e2e8f0;
+	--sl-color-text: #17171e;
+	--sl-color-gray-1: #17171e;
+	--sl-color-gray-2: #26262d;
+	--sl-color-gray-3: #3f3f46;
+	--sl-color-gray-4: #52525b;
+	--sl-color-gray-5: #71717a;
+	--sl-color-hairline: #e4e4e7;
 
-	--sl-color-accent: var(--brand-violet-dark);
-	/* Darker violet for light mode */
+	--sl-color-accent: #7c3aed;
+	--sl-color-accent-high: #4c1d95;
+	--sl-color-accent-low: #f5f3ff;
+}
+
+/* Fix White-on-White issues in Light Mode - AGGRESSIVE */
+[data-theme='light'] h1,
+[data-theme='light'] h2,
+[data-theme='light'] h3,
+[data-theme='light'] h4,
+[data-theme='light'] h5,
+[data-theme='light'] h6,
+[data-theme='light'] summary,
+[data-theme='light'] summary *,
+[data-theme='light'] .sidebar-content summary,
+[data-theme='light'] .sidebar-content summary * {
+	color: #111827 !important;
+	/* Extremely dark for visibility */
+}
+
+/* Specific Sidebar Category Styling */
+[data-theme='light'] .sidebar-content summary {
+	font-weight: 700 !important;
+	background-color: transparent !important;
+}
+
+[data-theme='light'] .sidebar-content summary:hover {
+	background-color: #f5f3ff !important;
 }
 
 /* Dark Theme - Sleek Cyberpunk */
@@ -42,7 +69,6 @@
 	--sl-color-hairline: #27272a;
 
 	--sl-color-accent: var(--brand-violet-neon);
-	/* Brighter violet for dark mode */
 }
 
 /* Ensure Logo is Round and Visible */
@@ -54,43 +80,47 @@
 	border: 2px solid var(--sl-color-accent);
 }
 
-/* Site Title Visibility - CRITICAL FIX */
+/* Site Title Visibility */
 .site-title span {
 	color: var(--sl-color-accent) !important;
 	font-weight: 800 !important;
-	font-size: 1.5rem !important;
-	letter-spacing: -0.025em !important;
-	text-shadow: 0 0 10px rgba(139, 92, 246, 0.2);
 }
 
 [data-theme='light'] .site-title span {
-	color: #4c1d95 !important;
-	/* Extremely dark violet for visibility */
+	color: #5b21b6 !important;
+	/* Softer but high contrast violet */
 }
 
 /* Hero Section Refinements */
 .hero h1 {
 	color: var(--sl-color-accent) !important;
 	font-weight: 900 !important;
-	line-height: 1.1 !important;
 }
 
 [data-theme='light'] .hero h1 {
-	color: #4c1d95 !important;
+	color: #5b21b6 !important;
 }
 
-/* Violet Buttons */
+/* Violet Buttons - Soothing Refinement */
 .sl-link-button.primary {
-	background-color: var(--brand-violet) !important;
+	background-color: #7c3aed !important;
+	/* Slightly softer darker violet */
 	color: white !important;
 	border: none !important;
 	font-weight: 600 !important;
-	box-shadow: 0 4px 14px 0 rgba(139, 92, 246, 0.39);
+	box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 
 .sl-link-button.primary:hover {
-	background-color: var(--brand-violet-dark) !important;
+	background-color: #6d28d9 !important;
 	transform: translateY(-1px);
+}
+
+/* Sidebar Hover & Selection */
+[data-theme='light'] .sidebar-content a:hover,
+[data-theme='light'] .sidebar-content a[aria-current="page"] {
+	color: #4c1d95 !important;
+	background-color: #f5f3ff !important;
 }
 
 /* Theme Switcher & Search Visibility */
@@ -98,9 +128,15 @@ starlight-theme-select select {
 	color: var(--sl-color-text) !important;
 	font-weight: 600 !important;
 	border-color: var(--sl-color-accent) !important;
+	background-color: transparent !important;
 }
 
 .search-container button {
 	border: 1px solid var(--sl-color-accent) !important;
 	border-radius: 8px !important;
+}
+
+/* Fix search highlights */
+[data-theme='light'] .pagefind-ui__result-link:hover {
+	color: #4c1d95 !important;
 }

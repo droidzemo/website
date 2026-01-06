@@ -12,10 +12,30 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
-
-# environment variables
+# environment variables & secrets
 .env
-.env.production
+.env.*
+!.env.example
+*.env
+.secrets
+secrets.*
+credentials.*
+*.credentials
+auth.json
+
+# Security keys and certificates
+*.pem
+*.key
+*.pub
+*.cert
+*.pfx
+*.p12
 
 # macOS-specific files
 .DS_Store
+
+# IDE and Editor files
+.vscode/
+.idea/
+*.swp
+*.swo

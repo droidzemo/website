@@ -27,6 +27,10 @@ export default defineConfig({
                     autogenerate: { directory: 'knowledge-base' },
                 },
                 {
+                    label: 'CTF',
+                    autogenerate: { directory: 'ctf' },
+                },
+                {
                     label: 'Writeups',
                     autogenerate: { directory: 'writeups' },
                 },

@@ -1,34 +1,55 @@
 ---
-title: Nigamelastic
-description: The ultimate cyber security resource.
+title: Welcome to Nigamelastic
+description: Home page of the site
 template: splash
 hero:
-  tagline: Your gateway to cybersecurity knowledge and resources.
+  tagline: Cybersecurity, Hacking, and Automation
   image:
     file: ../../assets/logo.jpg
   actions:
-    - text: Access Knowledge Base
-      link: ./knowledge-base/intro/
+    - text: Knowledge Base
+      link: /website/knowledge-base/ai-hacking/
       icon: right-arrow
       variant: primary
-    - text: View Resources
-      link: ./resources/links/
+    - text: Watch on YouTube
+      link: /website/youtube/
       icon: external
+      variant: secondary
 ---
 
-## What's Inside?
+import { LinkCard, CardGrid } from '@astrojs/starlight/components';
 
-<div class="card-grid">
-	<div class="card">
-		<h3>Knowledge Base</h3>
-		<p>In-depth articles, tutorials, and write-ups on cybersecurity topics.</p>
-	</div>
-	<div class="card">
-		<h3>Resources</h3>
-		<p>Curated links, tools, and code snippets for your operations.</p>
-	</div>
-	<div class="card">
-		<h3>Secure & Fast</h3>
-		<p>Built with security in mind, no tracking, minimal footprint.</p>
-	</div>
-</div>
+## Explore
+
+<CardGrid stagger>
+	<LinkCard
+		title="Knowledge Base"
+		description="Dive into AI Hacking, Mobile Hacking, and Webapp Hacking."
+		href="/website/knowledge-base/ai-hacking/"
+		icon="document"
+	/>
+	<LinkCard
+		title="Writeups"
+		description="Detailed writeups for CTFs and HackTheBox machines."
+		href="/website/writeups/ctfs/"
+		icon="pencil"
+	/>
+	<LinkCard
+		title="YouTube"
+		description="Check out my latest videos on cybersecurity and tech."
+		href="/website/youtube/"
+		icon="youtube"
+	/>
+	<LinkCard
+		title="News"
+		description="Latest curated cybersecurity news and updates."
+		href="/website/news/"
+		icon="open-book"
+	/>
+	<LinkCard
+		title="About"
+		description="Learn more about me and my experience."
+		href="/website/about/"
+		icon="information"
+	/>
+</CardGrid>

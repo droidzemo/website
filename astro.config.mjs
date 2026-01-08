@@ -19,12 +19,24 @@ export default defineConfig({
             ],
             sidebar: [
                 {
+                    label: 'YouTube',
+                    autogenerate: { directory: 'youtube' },
+                },
+                {
                     label: 'Knowledge Base',
                     autogenerate: { directory: 'knowledge-base' },
                 },
                 {
-                    label: 'Resources',
-                    autogenerate: { directory: 'resources' },
+                    label: 'Writeups',
+                    autogenerate: { directory: 'writeups' },
+                },
+                {
+                    label: 'About',
+                    slug: 'about',
+                },
+                {
+                    label: 'News',
+                    slug: 'news',
                 },
             ],
             customCss: [

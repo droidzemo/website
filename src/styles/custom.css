@@ -201,3 +201,30 @@
 [data-theme='light'] p {
     color: #374151;
 }
+
+/* --- MOBILE LAYOUT FIXES --- */
+/* Move the mobile preferences (theme switcher, social) to the top of the sidebar */
+@media (max-width: 50rem) {
+    .sidebar-content {
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* Target the wrapper div that contains .mobile-preferences */
+    /* Starlight wraps this in a div that is hidden on desktop (md:sl-hidden) */
+    .sidebar-content>div:has(.mobile-preferences) {
+        order: -1;
+        margin-bottom: 1.5rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid var(--sl-color-hairline);
+        width: 100%;
+    }
+
+    /* Ensure flex layout for the preferences themselves */
+    .mobile-preferences {
+        justify-content: space-between !important;
+        width: 100%;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+}

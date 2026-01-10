@@ -49,7 +49,7 @@ function formatDate(dateStr) {
 }
 ---
 
-<div class="space-y-16 my-12">
+<div class="my-12">
   {pages.slice(0, 10).map((page, index) => {
     const slug = page.id.replace(/\.mdx?$/, '');
     const href = `${cleanBase}/${slug}/`;
@@ -59,10 +59,10 @@ function formatDate(dateStr) {
     const isEven = index % 2 === 0;
     
     return (
-      <>
+      <div class="mb-16">
         {index > 0 && (
-          <div class="my-20">
-            <div class="h-2 bg-violet-500 dark:bg-violet-400 rounded-full mx-auto w-3/4"></div>
+          <div class="mb-16 mt-16">
+            <div class="h-1 bg-violet-500 dark:bg-violet-400 rounded-full mx-auto w-full max-w-md"></div>
           </div>
         )}
         
@@ -115,7 +115,7 @@ function formatDate(dateStr) {
             </div>
           </div>
         </a>
-      </>
+      </div>
     );
   })}
 </div>

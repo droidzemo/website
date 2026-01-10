@@ -49,8 +49,8 @@ function formatDate(dateStr) {
 }
 ---
 
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 my-12">
-  {pages.map((page) => {
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 my-12">
+  {pages.map((page, index) => {
     const slug = page.id.replace(/\.mdx?$/, '');
     const href = `${cleanBase}/${slug}/`;
     const youtubeId = getYouTubeId(page.body);
@@ -58,56 +58,73 @@ function formatDate(dateStr) {
     const formattedDate = formatDate(page.data.publishDate);
     
     return (
-      <a 
-        href={href}
-        class="no-underline group relative block h-full"
-      >
-        <div class="h-full overflow-hidden transition-all duration-300 rounded-3xl border border-slate-200 dark:border-white/10 bg-white dark:bg-slate-900 shadow-xl shadow-slate-200/50 dark:shadow-none hover:border-violet-500 hover:shadow-2xl hover:shadow-violet-500/10 dark:hover:shadow-violet-500/5 flex flex-col">
-          
-          {thumbnailUrl ? (
-            <div class="relative aspect-video overflow-hidden border-b border-slate-200 dark:border-white/10">
-              <img 
-                src={thumbnailUrl} 
-                alt={page.data.title}
-                class="object-cover w-full h-full transition-transform duration-500 group-hover:scale-105"
-                onerror="this.src='https://i.ytimg.com/vi/' + this.src.split('/').pop().replace('maxresdefault.jpg', 'hqdefault.jpg')"
-              />
-              <div class="absolute top-4 right-4 px-2 py-1 bg-violet-600 text-white text-[10px] font-bold rounded uppercase tracking-wider shadow-lg">
-                Video
+      <>
+        {index > 0 && (
+          <div class="col-span-full">
+            <div class="relative flex items-center justify-center my-4">
+              <div class="absolute inset-0 flex items-center">
+                <div class="w-full border-t-2 border-slate-200 dark:border-slate-700"></div>
               </div>
-            </div>
-          ) : (
-            <div class="relative h-40 bg-gradient-to-br from-violet-600/10 via-indigo-600/5 to-transparent flex items-center justify-center border-b border-slate-200 dark:border-white/10">
-               <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-violet-500 opacity-40">
-                  <path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+              <div class="relative px-4 bg-white dark:bg-slate-950">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-slate-300 dark:text-slate-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                 </svg>
-               <div class="absolute top-4 right-4 px-2 py-1 bg-slate-800 text-white text-[10px] font-bold rounded uppercase tracking-wider">
-                Article
               </div>
             </div>
-          )}
-
-          <div class="p-8 flex flex-col flex-grow">
-            <div class="flex items-center gap-2 mb-4">
-              {formattedDate && (
-                <span class="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest">
-                  {formattedDate}
-                </span>
-              )}
-              <div class="h-px flex-grow bg-slate-100 dark:bg-white/5"></div>
-            </div>
-            
-            <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3 group-hover:text-violet-500 transition-colors duration-300 leading-snug">
-              {page.data.title}
-            </h3>
-            {page.data.description && (
-              <p class="text-slate-600 dark:text-slate-400 text-sm line-clamp-3 leading-relaxed">
-                {page.data.description}
-              </p>
-            )}
           </div>
-        </div>
-      </a>
+        )}
+        
+        <a 
+          href={href}
+          class="no-underline group relative block h-full"
+        >
+          <div class="h-full overflow-hidden transition-all duration-300 rounded-2xl border-2 border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 shadow-2xl shadow-slate-300/30 dark:shadow-black/40 hover:border-violet-500 hover:shadow-violet-500/20 dark:hover:shadow-violet-500/20 hover:-translate-y-1 flex flex-col">
+            
+            {thumbnailUrl ? (
+              <div class="relative aspect-video overflow-hidden border-b-2 border-slate-300 dark:border-slate-700">
+                <img 
+                  src={thumbnailUrl} 
+                  alt={page.data.title}
+                  class="object-cover w-full h-full transition-transform duration-500 group-hover:scale-105"
+                  onerror="this.src='https://i.ytimg.com/vi/' + this.src.split('/').pop().replace('maxresdefault.jpg', 'hqdefault.jpg')"
+                />
+                <div class="absolute top-4 right-4 px-3 py-1.5 bg-violet-600 text-white text-xs font-bold rounded-lg uppercase tracking-wider shadow-lg">
+                  Video
+                </div>
+              </div>
+            ) : (
+              <div class="relative h-40 bg-gradient-to-br from-violet-600/10 via-indigo-600/5 to-transparent flex items-center justify-center border-b-2 border-slate-300 dark:border-slate-700">
+                 <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-violet-500 opacity-40">
+                    <path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                  </svg>
+                 <div class="absolute top-4 right-4 px-3 py-1.5 bg-slate-800 text-white text-xs font-bold rounded-lg uppercase tracking-wider">
+                  Article
+                </div>
+              </div>
+            )}
+
+            <div class="p-6 md:p-8 flex flex-col flex-grow">
+              <div class="flex items-center gap-2 mb-4 pb-3 border-b border-slate-200 dark:border-slate-700">
+                {formattedDate && (
+                  <span class="text-xs font-bold text-violet-600 dark:text-violet-400 uppercase tracking-widest">
+                    {formattedDate}
+                  </span>
+                )}
+                <div class="h-px flex-grow bg-slate-200 dark:bg-slate-700"></div>
+              </div>
+              
+              <h3 class="text-lg md:text-xl font-bold text-slate-900 dark:text-white mb-3 group-hover:text-violet-500 transition-colors duration-300 leading-snug">
+                {page.data.title}
+              </h3>
+              {page.data.description && (
+                <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed line-clamp-3">
+                  {page.data.description}
+                </p>
+              )}
+            </div>
+          </div>
+        </a>
+      </>
     );
   })}
 </div>
@@ -117,6 +134,7 @@ function formatDate(dateStr) {
     text-decoration: none !important;
   }
 </style>
+
 
 
 

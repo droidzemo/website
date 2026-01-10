@@ -49,73 +49,64 @@ function formatDate(dateStr) {
 }
 ---
 
-<div class="my-12">
+<div class="space-y-8 my-12">
   {pages.slice(0, 10).map((page, index) => {
     const slug = page.id.replace(/\.mdx?$/, '');
     const href = `${cleanBase}/${slug}/`;
     const youtubeId = getYouTubeId(page.body);
     const thumbnailUrl = youtubeId ? `https://i.ytimg.com/vi/${youtubeId}/maxresdefault.jpg` : null;
     const formattedDate = formatDate(page.data.publishDate);
-    const isEven = index % 2 === 0;
     
     return (
-      <div class="mb-20">
-        {index > 0 && (
-          <div class="my-20 py-6 bg-violet-600 dark:bg-violet-500 rounded-2xl flex items-center justify-center">
-            <span class="text-white font-bold text-xl tracking-widest">━━━━━━━━━━━━━━━━━━━━━━</span>
-          </div>
-        )}
-        
-        <a 
-          href={href}
-          class="no-underline group relative block"
-        >
-          <div class="overflow-hidden transition-all duration-300 rounded-2xl border-4 border-violet-500 dark:border-violet-400 bg-white dark:bg-slate-900 shadow-[0_10px_40px_rgba(139,92,246,0.3)] dark:shadow-[0_10px_40px_rgba(139,92,246,0.4)] hover:shadow-[0_20px_60px_rgba(139,92,246,0.5)] dark:hover:shadow-[0_20px_60px_rgba(139,92,246,0.6)] hover:-translate-y-2 flex flex-col md:flex-row">
-            
-            {thumbnailUrl ? (
-              <div class="relative md:w-2/5 aspect-video md:aspect-auto overflow-hidden border-b-4 md:border-b-0 md:border-r-4 border-violet-500 dark:border-violet-400">
-                <img 
-                  src={thumbnailUrl} 
-                  alt={page.data.title}
-                  class="object-cover w-full h-full transition-transform duration-500 group-hover:scale-110"
-                  onerror="this.src='https://i.ytimg.com/vi/' + this.src.split('/').pop().replace('maxresdefault.jpg', 'hqdefault.jpg')"
-                />
-                <div class="absolute top-4 right-4 px-4 py-2 bg-violet-600 text-white text-sm font-bold rounded-xl uppercase tracking-wider shadow-2xl">
-                  📹 Video
-                </div>
+      <a 
+        href={href}
+        class="no-underline group relative block"
+      >
+        <div class="overflow-hidden transition-all duration-300 rounded-xl border border-slate-200 dark:border-white/10 bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800 hover:border-violet-500 dark:hover:border-violet-400 hover:shadow-xl hover:shadow-violet-500/20 dark:hover:shadow-violet-500/30 hover:-translate-y-1 flex flex-col md:flex-row p-0">
+          
+          {thumbnailUrl ? (
+            <div class="relative md:w-2/5 aspect-video md:aspect-auto overflow-hidden">
+              <img 
+                src={thumbnailUrl} 
+                alt={page.data.title}
+                class="object-cover w-full h-full transition-transform duration-500 group-hover:scale-105"
+                onerror="this.src='https://i.ytimg.com/vi/' + this.src.split('/').pop().replace('maxresdefault.jpg', 'hqdefault.jpg')"
+              />
+              <div class="absolute top-4 right-4 px-3 py-1.5 bg-violet-600 text-white text-xs font-bold rounded-lg uppercase tracking-wider shadow-lg">
+                📹 Video
               </div>
-            ) : (
-              <div class="relative md:w-2/5 h-48 md:h-auto bg-gradient-to-br from-violet-100 to-indigo-100 dark:from-violet-900/30 dark:to-indigo-900/30 flex items-center justify-center border-b-4 md:border-b-0 md:border-r-4 border-violet-500 dark:border-violet-400">
-                 <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-violet-500 dark:text-violet-400 opacity-50">
-                    <path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                  </svg>
-                 <div class="absolute top-4 right-4 px-4 py-2 bg-slate-800 text-white text-sm font-bold rounded-xl uppercase tracking-wider shadow-2xl">
-                  📄 Article
-                </div>
+            </div>
+          ) : (
+            <div class="relative md:w-2/5 h-48 md:h-auto bg-gradient-to-br from-violet-100 to-indigo-100 dark:from-violet-900/30 dark:to-indigo-900/30 flex items-center justify-center">
+               <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-violet-500 dark:text-violet-400 opacity-50">
+                  <path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+               <div class="absolute top-4 right-4 px-3 py-1.5 bg-slate-800 text-white text-xs font-bold rounded-lg uppercase tracking-wider shadow-lg">
+                📄 Article
+              </div>
+            </div>
+          )}
+
+          <div class="p-6 md:p-8 flex flex-col flex-grow md:w-3/5">
+            {formattedDate && (
+              <div class="mb-3">
+                <span class="inline-block text-xs font-semibold text-violet-600 dark:text-violet-400 uppercase tracking-wider">
+                  📅 {formattedDate}
+                </span>
               </div>
             )}
-
-            <div class="p-8 md:p-10 flex flex-col flex-grow md:w-3/5">
-              {formattedDate && (
-                <div class="mb-4">
-                  <span class="inline-block text-sm font-bold text-white bg-violet-600 dark:bg-violet-500 px-4 py-2 rounded-full uppercase tracking-widest shadow-lg">
-                    📅 {formattedDate}
-                  </span>
-                </div>
-              )}
-              
-              <h3 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4 group-hover:text-violet-600 dark:group-hover:text-violet-400 transition-colors duration-300 leading-tight">
-                {page.data.title}
-              </h3>
-              {page.data.description && (
-                <p class="text-slate-700 dark:text-slate-300 text-lg leading-relaxed">
-                  {page.data.description}
-                </p>
-              )}
-            </div>
+            
+            <h3 class="text-xl md:text-2xl font-bold text-slate-900 dark:text-white mb-3 group-hover:text-violet-600 dark:group-hover:text-violet-400 transition-colors duration-300 leading-tight">
+              {page.data.title}
+            </h3>
+            {page.data.description && (
+              <p class="text-slate-600 dark:text-slate-400 text-base leading-relaxed">
+                {page.data.description}
+              </p>
+            )}
           </div>
-        </a>
-      </div>
+        </div>
+      </a>
     );
   })}
 </div>

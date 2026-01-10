@@ -17,6 +17,7 @@ To add a new page (e.g., a new YouTube video or a Writeup), follow these steps:
     ---
     title: My New Page Title
     description: A short description of the content.
+    publishDate: "2024-01-10"
     ---
     ```
 4.  **Write Content**: Add your content below the second `---`. It will automatically appear on the section's index page!
@@ -28,6 +29,7 @@ File path: `src/content/docs/youtube/my-video.mdx`
 ---
 title: How to Hack WiFi
 description: A tutorial on wireless security.
+publishDate: "2024-01-10"
 ---
 
 ## Video
@@ -47,6 +49,7 @@ File path: `src/content/docs/writeups/hackthebox/machine-name.mdx`
 ---
 title: Machine Name
 description: Walkthrough for Machine Name on HackTheBox.
+publishDate: "2024-01-10"
 ---
 
 ## Introduction

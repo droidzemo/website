@@ -15,6 +15,14 @@ const pages = allDocs
     return page.id.startsWith(directory + '/') && !page.id.endsWith('index.mdx');
   })
   .sort((a, b) => {
+    const dateA = a.data.publishDate ? new Date(a.data.publishDate) : new Date(0);
+    const dateB = b.data.publishDate ? new Date(b.data.publishDate) : new Date(0);
+    
+    // Sort by date descending (newest first)
+    if (dateA.getTime() !== dateB.getTime()) {
+      return dateB.getTime() - dateA.getTime();
+    }
+    // Fallback to title sorting if dates are equal or missing
     return a.data.title.localeCompare(b.data.title);
   });
 
@@ -28,21 +36,33 @@ function getYouTubeId(body) {
   const match = body.match(/<YouTube\s+id=["']([^"']+)["']/);
   return match ? match[1] : null;
 }
+
+// Helper to format date
+function formatDate(dateStr) {
+  if (!dateStr) return null;
+  const date = new Date(dateStr);
+  return date.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric'
+  });
+}
 ---
 
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 my-10">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 my-12">
   {pages.map((page) => {
     const slug = page.id.replace(/\.mdx?$/, '');
     const href = `${cleanBase}/${slug}/`;
     const youtubeId = getYouTubeId(page.body);
     const thumbnailUrl = youtubeId ? `https://i.ytimg.com/vi/${youtubeId}/maxresdefault.jpg` : null;
+    const formattedDate = formatDate(page.data.publishDate);
     
     return (
       <a 
         href={href}
         class="no-underline group relative block h-full"
       >
-        <div class="h-full overflow-hidden transition-all duration-300 rounded-2xl border border-slate-200 dark:border-white/10 bg-white dark:bg-slate-900/50 hover:border-violet-500 hover:shadow-xl dark:hover:shadow-violet-500/10 flex flex-col">
+        <div class="h-full overflow-hidden transition-all duration-300 rounded-3xl border border-slate-200 dark:border-white/10 bg-white dark:bg-slate-900 shadow-xl shadow-slate-200/50 dark:shadow-none hover:border-violet-500 hover:shadow-2xl hover:shadow-violet-500/10 dark:hover:shadow-violet-500/5 flex flex-col">
           
           {thumbnailUrl ? (
             <div class="relative aspect-video overflow-hidden border-b border-slate-200 dark:border-white/10">
@@ -52,23 +72,32 @@ function getYouTubeId(body) {
                 class="object-cover w-full h-full transition-transform duration-500 group-hover:scale-105"
                 onerror="this.src='https://i.ytimg.com/vi/' + this.src.split('/').pop().replace('maxresdefault.jpg', 'hqdefault.jpg')"
               />
-              <div class="absolute top-3 right-3 px-2 py-1 bg-violet-600/90 text-white text-[10px] font-bold rounded uppercase tracking-wider shadow-lg">
+              <div class="absolute top-4 right-4 px-2 py-1 bg-violet-600 text-white text-[10px] font-bold rounded uppercase tracking-wider shadow-lg">
                 Video
               </div>
             </div>
           ) : (
-            <div class="relative h-32 bg-gradient-to-br from-violet-600/10 to-indigo-600/10 flex items-center justify-center border-b border-slate-200 dark:border-white/10">
-               <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-violet-500 opacity-50">
+            <div class="relative h-40 bg-gradient-to-br from-violet-600/10 via-indigo-600/5 to-transparent flex items-center justify-center border-b border-slate-200 dark:border-white/10">
+               <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-violet-500 opacity-40">
                   <path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                 </svg>
-               <div class="absolute top-3 right-3 px-2 py-1 bg-slate-800/80 text-white text-[10px] font-bold rounded uppercase tracking-wider">
+               <div class="absolute top-4 right-4 px-2 py-1 bg-slate-800 text-white text-[10px] font-bold rounded uppercase tracking-wider">
                 Article
               </div>
             </div>
           )}
 
-          <div class="p-6 flex flex-col flex-grow">
-            <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2 group-hover:text-violet-500 transition-colors duration-300">
+          <div class="p-8 flex flex-col flex-grow">
+            <div class="flex items-center gap-2 mb-4">
+              {formattedDate && (
+                <span class="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest">
+                  {formattedDate}
+                </span>
+              )}
+              <div class="h-px flex-grow bg-slate-100 dark:bg-white/5"></div>
+            </div>
+            
+            <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3 group-hover:text-violet-500 transition-colors duration-300 leading-snug">
               {page.data.title}
             </h3>
             {page.data.description && (
@@ -88,5 +117,6 @@ function getYouTubeId(body) {
     text-decoration: none !important;
   }
 </style>
+
 
 

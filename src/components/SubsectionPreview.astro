@@ -58,12 +58,12 @@ function formatDate(dateStr) {
     const formattedDate = formatDate(page.data.publishDate);
     
     return (
-      <div style="margin-bottom: 4rem;">
+      <div style="margin-bottom: 10rem; padding-bottom: 2rem; background-color: rgba(139, 92, 246, 0.05);">
         <a 
           href={href}
           class="no-underline group relative block"
         >
-          <div class="overflow-hidden transition-all duration-300 rounded-xl border-2 border-slate-300 dark:border-slate-700 bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800 hover:border-violet-500 dark:hover:border-violet-400 hover:shadow-2xl hover:shadow-violet-500/30 dark:hover:shadow-violet-500/40 hover:-translate-y-1 flex flex-col md:flex-row p-0">
+          <div class="overflow-hidden transition-all duration-300 rounded-xl border-4 border-violet-500 dark:border-violet-400 bg-gradient-to-br from-white to-slate-50 dark:from-slate-900 dark:to-slate-800 hover:shadow-2xl hover:shadow-violet-500/30 dark:hover:shadow-violet-500/40 hover:-translate-y-1 flex flex-col md:flex-row p-0">
             
             {thumbnailUrl ? (
               <div class="relative md:w-2/5 aspect-video md:aspect-auto overflow-hidden">

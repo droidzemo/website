@@ -3,39 +3,23 @@
 ## Overview
 This website is built with [Astro Starlight](https://starlight.astro.build/), a documentation framework that makes it easy to manage content using Markdown files. As an admin, your primary responsibility is adding and updating these markdown files.
 
-## Content Management
+### Content Management
 
-### Directory Structure
-All content is located in `src/content/docs/`. The folder structure directly maps to the URL structure of the website.
-
-- **`src/content/docs/`**
-    - `index.mdx` (Home Page)
-    - `about.mdx` (About Page)
-    - `news.mdx` (News Page)
-    - **`youtube/`** (YouTube Section)
-        - `index.mdx` (Main list)
-        - `video-title.mdx` (Individual video pages)
-    - **`knowledge-base/`** (Knowledge Base Section)
-        - `ai-hacking/`
-        - `mobile-hacking/`
-        - `webapp-hacking/`
-    - **`writeups/`** (Writeups Section)
-        - `ctfs/`
-        - `hackthebox/`
+The website is designed to be low-maintenance. Sections like YouTube, CTF, and Writeups automatically list their content using "previews".
 
 ### Adding New Content
 To add a new page (e.g., a new YouTube video or a Writeup), follow these steps:
 
 1.  **Navigate** to the appropriate folder in `src/content/docs/`.
 2.  **Create** a new file with the extension `.mdx` (e.g., `new-video.mdx`).
-    - *Tip: Use lowercase letters and hyphens for filenames (e.g., `my-new-post.mdx`).*
-3.  **Add Frontmatter**: Every file must start with "frontmatter" enclosed in `---`.
+3.  **Add Frontmatter**: Every file must start with "frontmatter". The `title` and `description` will automatically appear in the preview cards of the main section.
     ```yaml
     ---
     title: My New Page Title
     description: A short description of the content.
     ---
     ```
+4.  **Write Content**: Add your content below the second `---`. It will automatically appear on the section's index page!
 4.  **Write Content**: Add your content below the second `---` using Markdown.
 
 #### Template: YouTube Video

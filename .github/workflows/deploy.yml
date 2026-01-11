@@ -8,7 +8,7 @@ on:
       commit_sha:
         description: 'Commit SHA to deploy (leave empty for latest)'
         required: false
-        default: '4c01dab892c7f6c5b76852106ec6f225211063df' # I've set your specific commit as the default suggestion
+        default: '8d24240f3bd8fa249e855652bdebcd3f89b344ba' # I've set your specific commit as the default suggestion
 
 permissions:
   contents: read

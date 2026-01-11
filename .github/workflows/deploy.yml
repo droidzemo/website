@@ -4,6 +4,11 @@ on:
   push:
     branches: [ main ]
   workflow_dispatch:
+    inputs:
+      commit_sha:
+        description: 'Commit SHA to deploy (leave empty for latest)'
+        required: false
+        default: '4c01dab892c7f6c5b76852106ec6f225211063df' # I've set your specific commit as the default suggestion
 
 permissions:
   contents: read
@@ -16,6 +21,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          # Uses the input SHA if provided; otherwise uses the commit that triggered the workflow
+          ref: ${{ github.event.inputs.commit_sha || github.sha }}
 
       - name: Setup Node
         uses: actions/setup-node@v4

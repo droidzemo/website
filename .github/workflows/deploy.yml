@@ -4,11 +4,12 @@ on:
   push:
     branches: [ main ]
   workflow_dispatch:
+    # Adding an input field to the "Run workflow" popup
     inputs:
       commit_sha:
         description: 'Commit SHA to deploy (leave empty for latest)'
         required: false
-        default: 'a3ddaf6ed8a9253e7c0039bc8941b76f411b7179' # I've set your specific commit as the default suggestion
+        default: ''
 
 permissions:
   contents: read
@@ -22,7 +23,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          # Uses the input SHA if provided; otherwise uses the commit that triggered the workflow
+          # If commit_sha is provided, use it. Otherwise, use the default (latest).
           ref: ${{ github.event.inputs.commit_sha || github.sha }}
 
       - name: Setup Node

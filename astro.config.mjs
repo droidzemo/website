@@ -14,6 +14,13 @@ export default defineConfig({
             logo: {
                 src: './src/assets/logo.jpg',
             },
+            head: [
+                // Prevent caching of the main HTML document to ensure users see the latest updates immediately
+                // This is "Fast & Reliable" because HTML is small, but ensures it points to correct hashed assets
+                { tag: 'meta', attrs: { 'http-equiv': 'Cache-Control', content: 'no-cache, no-store, must-revalidate' } },
+                { tag: 'meta', attrs: { 'http-equiv': 'Pragma', content: 'no-cache' } },
+                { tag: 'meta', attrs: { 'http-equiv': 'Expires', content: '0' } },
+            ],
             social: [
                 { label: 'GitHub', icon: 'github', href: 'https://github.com/droidzemo/website' },
             ],

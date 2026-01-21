@@ -21,18 +21,22 @@ export default defineConfig({
                 {
                     label: 'YouTube',
                     autogenerate: { directory: 'youtube' },
+                    collapsed: true,
                 },
                 {
                     label: 'Knowledge Base',
                     autogenerate: { directory: 'knowledge-base' },
+                    collapsed: true,
                 },
                 {
                     label: 'CTF',
                     autogenerate: { directory: 'ctf' },
+                    collapsed: true,
                 },
                 {
                     label: 'Writeups',
                     autogenerate: { directory: 'writeups' },
+                    collapsed: true,
                 },
                 {
                     label: 'About',

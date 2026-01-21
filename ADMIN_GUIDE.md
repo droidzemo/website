@@ -4,8 +4,9 @@
 This website is built with [Astro Starlight](https://starlight.astro.build/), a documentation framework that makes it easy to manage content using Markdown files. As an admin, your primary responsibility is adding and updating these markdown files.
 
 ### Content Management
-
 The website is designed to be low-maintenance. Sections like YouTube, CTF, and Writeups automatically list their content using "previews".
+
+**Note:** Each main section (e.g., `writeups/`) must have an `index.mdx` file containing the `<SubsectionPreview />` component to render the list of articles. Do not delete these `index.mdx` files.
 
 ### Adding New Content
 To add a new page (e.g., a new YouTube video or a Writeup), follow these steps:
